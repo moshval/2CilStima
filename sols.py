@@ -19,14 +19,19 @@ def makeAdj(isi,codelist):
                 adjmat[codelist.index(sublist[i])][codelist.index(sublist[0])] = 1;
     return adjmat
 
-def countIn(isi,codelist): 
+def countIn(adjmat): 
     '''
     Mencari derajat masuk tiap node
     '''
-    listIn = [0 for i in range(len(codelist))]
-    for sublist in isi:
-        listIn[codelist.index(sublist[0])] = len(sublist) - 1;
-    return listIn    
+    listIn = [0 for i in range(len(adjmat))]
+    for i in range(len(adjmat)):
+        count = 0
+        for j in range(len(adjmat[0])):
+            if(adjmat[j][i]==1):
+                count+=1
+        listIn[i] = count
+    return listIn
+
 
 
 def topSort(adjmat):
@@ -78,3 +83,43 @@ def generateCode(order,codelist):
                 #visited.append(i)
                 #selected = i
                 #break
+
+#def topSortAlt(adjmat,listIn,visited,order):
+ #   for i in range(len(listIn)):
+  #      tempList = []
+   #     if(listIn[i] == 0 and (i not in visited)):
+    #       visited.append(i)
+    #order.append(tempList)
+
+    #for i in tempList:
+        #for j in range(len(adjmat)):
+            #adjmat[i][j] = 0
+    #listIn = countIn(adjmat)
+    
+    #return adjmat,listIn,visited,order
+
+
+def topSortAlt(adjmat,listIn):
+    order = []
+    zeroIn = []
+    for i in range(len(listIn)):
+        if(listIn[i] == 0):
+            zeroIn.append(i)
+    while(len(zeroIn)>0):
+        order.append(zeroIn[0])
+        n = zeroIn[0]
+        nextnodes = []
+        for i in range(len(adjmat)):
+            if(adjmat[n][i]==1):
+                nextnodes.append(i)
+        for node in nextnodes:
+            adjmat[n][node] = 0
+            listIn = countIn(adjmat)
+            if(listIn[node] == 0):
+                zeroIn.append(node)
+        zeroIn.pop(0)
+    return order
+
+
+
+        
