@@ -8,7 +8,7 @@ Deskripsi : Tugas Kecil 2 IF2211 Strategi Algoritma
 Deskripsi File : File Utama (Driver)
 '''
 
-from sols import countIn, generateCode, makeAdj, topSort, topSortAlt,visits
+from sols import countIn, generateCode, generateCode2, makeAdj, topSort, topSortAlt,visits
 from util import inputPrinter, matrixPrinter, reader # Utility
 
 print("\nMatkul Planner")
@@ -31,16 +31,10 @@ print(order)
 finList = generateCode(order,parse[1])
 print(finList)
 
-#visited = []
-#order = []
-#while(len(visited) <= len(parse[1])):
- #   adjmat,listIn,visited,order = topSortAlt(adjmat,listIn,visited,order)
 
-#print(order)
-
-order = topSortAlt(adjmat,listIn)
-print(order)
-finList = generateCode(order,parse[1])
-print(finList)
+bruh = topSortAlt(adjmat,listIn)
+print(bruh)
+final = generateCode2(bruh,parse[1])
+print(final)
 
 

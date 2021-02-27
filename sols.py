@@ -75,6 +75,18 @@ def generateCode(order,codelist):
         finList.append(codelist[num])
     return finList
 
+def generateCode2(order,codelist):
+    '''
+    Mencocokan hasil pengurutan dengan kode kuliah pada codelist
+    '''
+    finList = []
+    for sublist in order:
+        templist = []
+        for num in sublist:
+            templist.append(codelist[num])
+        finList.append(list(templist))
+    return finList
+
 
 #def topSort(adjmat,listIn,visited):
     #while(len(visited) < len(listIn)):
@@ -106,18 +118,19 @@ def topSortAlt(adjmat,listIn):
         if(listIn[i] == 0):
             zeroIn.append(i)
     while(len(zeroIn)>0):
-        order.append(zeroIn[0])
-        n = zeroIn[0]
-        nextnodes = []
-        for i in range(len(adjmat)):
-            if(adjmat[n][i]==1):
-                nextnodes.append(i)
-        for node in nextnodes:
-            adjmat[n][node] = 0
-            listIn = countIn(adjmat)
-            if(listIn[node] == 0):
-                zeroIn.append(node)
-        zeroIn.pop(0)
+        order.append(list(zeroIn))
+        for num in range(len(zeroIn)):
+            n = zeroIn[0]
+            nextnodes = []
+            for i in range(len(adjmat)):
+                if(adjmat[n][i]==1):
+                    nextnodes.append(i)
+            for node in nextnodes:
+                adjmat[n][node] = 0
+                listIn = countIn(adjmat)
+                if(listIn[node] == 0):
+                    zeroIn.append(node)
+            zeroIn.pop(0)
     return order
 
 
