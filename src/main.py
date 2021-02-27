@@ -10,6 +10,7 @@ Deskripsi File : File Utama (Driver)
 
 from sols import countIn, makeAdj, topSort, topSortAlt,visits # Solusi
 from util import inputPrinter, matrixPrinter, printSems, reader, generateCode,generateCode2 # Utility
+from time import time # Library Waktu
 
 print("\n=======================================================")
 print("            <<Memorable MatKul Scheduler>>               ")
@@ -18,6 +19,8 @@ print("            Cr : Mohammad Sheva (13519018)               ")
 print("=======================================================\n")
 
 parse = reader() # Parsing dari text file , parse[0] = list isi dan parse[1] = list codelist
+inittime = time() # Time start
+
 print("\nInput :")
 inputPrinter(parse[0])
 
@@ -34,4 +37,6 @@ if(len(order)!=0):
     # print(finList)
     print("\nOutput :")
     printSems(finList)
+
+print("\nLama eksekusi : ",time()-inittime," detik")
 
