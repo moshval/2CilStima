@@ -93,13 +93,3 @@ def printSems(finList):
             print(sublist[j],end=", ")
         print(sublist[len(sublist)-1])
         i+=1
-
-# ALt
-def generateCode2(order,codelist):
-    '''
-    Mencocokan hasil pengurutan dengan kode kuliah pada codelist
-    '''
-    finList = []
-    for num in order:
-        finList.append(codelist[num])
-    return finList

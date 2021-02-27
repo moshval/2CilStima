@@ -1,4 +1,4 @@
-# Memorable MatKul Scheduler
+# Memorable MatKul Planner
 
 Tugas Kecil 2 IF2211 Strategi Algoritma 2020/21\
 Disusun oleh : Mohammad Sheva Almeyda Sofjan (13519018 | K01)
@@ -13,7 +13,6 @@ Input berupa graf dalam file dengan ekstensi .txt dengan format berikut :
 <kode_kuliah_1>,<kode  kuliah prasyarat -1>,  <kode  kuliah  prasyarat -2>,  <kode  kuliah prasyarat -3>.
 <kode_kuliah_2>,<kode kuliah prasyarat -1>, <kode kuliah prasyarat -2>.
 <kode_kuliah_3>,<kode  kuliah  prasyarat -1>,  <kode  kuliah  prasyarat -2>,  <kode  kuliah prasyarat -3>, <kodekuliah prasyarat -4>.<kode_kuliah_4>.
-
 ```
 Contoh input : (contoh lain terdapat pada folder test)
 ```
@@ -22,7 +21,6 @@ c2, c1, c4.
 c3.
 c4, c1, c3.
 c5, c2, c4.
-
 ```
 ---
 # How To Run :
@@ -31,7 +29,7 @@ c5, c2, c4.
 2. Akan muncul tampilan berikut:
 ```
 =======================================================
-            <<Memorable MatKul Scheduler>>
+            <<Memorable MatKul Planner>>
   Dapat menyusun rencana pengambilan mata kuliah anda
             Cr : Mohammad Sheva (13519018)
 =======================================================
@@ -44,7 +42,7 @@ Masukkan Nama File (dengan ekstensi, sebagai contoh : tc1.txt) :
 # Contoh Eksekusi Program :
 ```
 =======================================================
-            <<Memorable MatKul Scheduler>>
+            <<Memorable MatKul Planner>>
   Dapat menyusun rencana pengambilan mata kuliah anda
             Cr : Mohammad Sheva (13519018)
 =======================================================

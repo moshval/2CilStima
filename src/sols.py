@@ -41,34 +41,39 @@ def topSort(adjmat,listIn):
     mereturn list order yaitu list yang berisi urutan pengambilan mata kuliah
     adjmat : matriks adjacency
     listIn : list berisi derajat masuk tiap node
+    Decrease and conquer pada algoritma ini terletak pada pengulangan operasi pemilihan dan penghapusan node dengan derajat masuk 0 
+    sehingga banyaknya node yang harus diurus semakin berkurang hingga habis (memenuhi ketentuan stop pada while len(zeroIn) > 0) 
+    dan order mengandung semua node
     '''
     order = [] # inisialisasi list order dan zeroIn (list yang berisi node yang derajat masuknya = 0)
     zeroIn = []
-    for i in range(len(listIn)): # Memasukkan node dengan derajat masuk 0 ke list zeroIn 
+    for i in range(len(listIn)): # Memasukkan node dengan derajat masuk 0 ke list zeroIn (dapat dianggap stack juga)
         if(listIn[i] == 0):
             zeroIn.append(i)
     while(len(zeroIn)>0): # Loop akan berjalan selama masih ada list dengan derajat masuk 0
-        order.append(list(zeroIn))
-        for num in range(len(zeroIn)):
-            currnode = zeroIn[0]
-            nextnodes = getNextNodes(currnode,adjmat)
-            for node in nextnodes:
-                adjmat[currnode][node] = 0
-                listIn = countIn(adjmat)
-                if(listIn[node] == 0):
-                    zeroIn.append(node)
-            zeroIn.pop(0)
+        order.append(list(zeroIn)) # Memasukkan list zeroIn kedalam list order sehingga zeroIn merupakan sublist dari list order
+        for num in range(len(zeroIn)): # Iterasi pada list zeroIn, sehingga dapat menghasilkan lebih dari satu mata kuliah pada satu semester 
+            currnode = zeroIn[0] # Ambil elemen pertama zeroIn
+            nextnodes = getNextNodes(currnode,adjmat) # Node-node berikutnya dari currnode
+            for node in nextnodes: # Iterasi pada node-node berikutnya dari currnode
+                adjmat[currnode][node] = 0 # Mengeliminasi/menghapus edge dari currnode ke node
+                listIn = countIn(adjmat) # Mengalkulasikan ulang derajat masuk tiap node akibat perubahan pada perintah sebelumnya
+                if(listIn[node] == 0): # Jika node selanjutnya dari currnode sudah tidak memiliki derajat masuk akibat eliminasi
+                    zeroIn.append(node) # Masukkan ke list zeroIn
+            zeroIn.pop(0) # Hapus elemen pertama zeroIn (elemen pertama sudah selesai diproses)
 
-    if(sum(listIn) > 0):
+    if(sum(listIn) > 0): # Input bukan DAG berarti masih ada edge yang tidak tereliminasi
         print("\nGraf input bukan merupakan DAG (Directed Acyclic Graph), sehingga tidak dapat dicari urutan pengambilan mata kuliahnya.")
         return []
     else:
-        return order
+        return order # return urutan pengambilan
 
 
 def getNextNodes(currnode,adjmat):
     '''
     Untuk mendapatkan node-node tetangga di mana terdapat busur dari currnode ke node tetangga tersebut , mereturn list yang berisi informasi tersebut
+    currnode : node yang akan dicari tetangganya
+    adjmat : adjacency matrix
     '''
     nextnodes = []
     for i in range(len(adjmat)):
@@ -76,40 +81,6 @@ def getNextNodes(currnode,adjmat):
             nextnodes.append(i)
     return nextnodes
 
-
-# Algoritma Alternatif
-
-def topSortAlt(adjmat):
-    '''
-    Topological Sort untuk mendapatkan urutan pengambilan kuliah
-    '''
-    visited = [0 for k in range(len(adjmat))]
-    order = [0 for k in range(len(adjmat))]
-    i = len(adjmat) - 1
-
-    for at in range(len(adjmat)):
-        if(visited[at]==0):
-            visitedNodes = []
-            visits(at,visited,visitedNodes,adjmat)
-            for node in visitedNodes:
-                order[i] = node
-                i-=1
-    return order
-
-def visits(at,visited,visitedNodes,adjmat):
-    '''
-    Mengunjungi node yang belum dikunjungi, skema dfs (depth first search)
-    '''
-    visited[at] = 1
-    nextnodes = []
-    for i in range(len(adjmat)):
-        if(adjmat[at][i]==1):
-            nextnodes.append(i)
-    for node in nextnodes:
-        if(visited[node] == 0):
-            visits(node,visited,visitedNodes,adjmat)
-
-    visitedNodes.append(at)
 
 
 

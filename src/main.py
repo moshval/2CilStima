@@ -8,12 +8,12 @@ Deskripsi : Tugas Kecil 2 IF2211 Strategi Algoritma
 Deskripsi File : File Utama (Driver)
 '''
 
-from sols import countIn, makeAdj, topSort, topSortAlt,visits # Solusi
-from util import inputPrinter, matrixPrinter, printSems, reader, generateCode,generateCode2 # Utility
+from sols import countIn, makeAdj, topSort # Solusi
+from util import inputPrinter, matrixPrinter, printSems, reader, generateCode  # Utility
 from time import time # Library Waktu
 
 print("\n=======================================================")
-print("            <<Memorable MatKul Scheduler>>               ")
+print("             <<Memorable MatKul Planner>>                ")
 print("  Dapat menyusun rencana pengambilan mata kuliah anda    ")
 print("            Cr : Mohammad Sheva (13519018)               ")
 print("=======================================================\n")
