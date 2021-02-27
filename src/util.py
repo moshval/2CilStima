@@ -14,9 +14,9 @@ def reader():
     '''
     notfound = True
     while notfound :
-        #fname = input("Masukkan Nama File (dengan ekstensi, sebagai contoh : tc1.txt) : ")
+        fname = input("Masukkan Nama File (dengan ekstensi, sebagai contoh : tc1.txt) : ")
         try:
-            file = open("tc2.txt","r")
+            file = open('../test/'+fname,"r")
             notfound = False
         except:
              print("File tidak ditemukan. Ulangi lagi")
@@ -30,10 +30,10 @@ def reader():
         isi[i] = isi[i].replace(".","")
         isi[i] = isi[i].split(",")
 
-    # List of Unique nodes
+    # List of Unique nodes/codes
     codelist = []
 
-    # Append ke list of unique nodes
+    # Append ke list of unique nodes/codes
     for sublist in isi:
         for code in sublist:
             try:
@@ -41,7 +41,7 @@ def reader():
             except:
                 codelist.append(code)
                 
-    codelist = sorted(codelist) #sort kode kuliah
+    codelist = sorted(codelist) #sort kode kuliah secara alfanumerik
 
     return isi,codelist
 
@@ -67,3 +67,39 @@ def matrixPrinter(mat):
         for j in range(len(mat[0])):
             print(mat[i][j],end=" ")
         print()
+
+def generateCode(order,codelist):
+    '''
+    Mencocokan hasil pengurutan dengan kode kuliah pada codelist
+    '''
+    finList = []
+    for sublist in order:
+        templist = []
+        for num in sublist:
+            templist.append(codelist[num])
+        finList.append(list(templist))
+    return finList
+
+
+def printSems(finList):
+    '''
+    Print Output per semester
+    '''
+    i = 1
+    for sublist in finList:
+        print("Semester",end=" ")
+        print(i,end=" : ")
+        for j in range(len(sublist)-1):
+            print(sublist[j],end=", ")
+        print(sublist[len(sublist)-1])
+        i+=1
+
+# ALt
+def generateCode2(order,codelist):
+    '''
+    Mencocokan hasil pengurutan dengan kode kuliah pada codelist
+    '''
+    finList = []
+    for num in order:
+        finList.append(codelist[num])
+    return finList
