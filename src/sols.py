@@ -47,7 +47,7 @@ def topSort(adjmat,listIn):
     '''
     order = [] # inisialisasi list order dan zeroIn (list yang berisi node yang derajat masuknya = 0)
     zeroIn = []
-    for i in range(len(listIn)): # Memasukkan node dengan derajat masuk 0 ke list zeroIn (dapat dianggap stack juga)
+    for i in range(len(listIn)): # Base case, Memasukkan node dengan derajat masuk 0 ke list zeroIn (dapat dianggap queue juga)
         if(listIn[i] == 0):
             zeroIn.append(i)
     while(len(zeroIn)>0): # Loop akan berjalan selama masih ada list dengan derajat masuk 0
@@ -55,10 +55,10 @@ def topSort(adjmat,listIn):
         for num in range(len(zeroIn)): # Iterasi pada list zeroIn, sehingga dapat menghasilkan lebih dari satu mata kuliah pada satu semester 
             currnode = zeroIn[0] # Ambil elemen pertama zeroIn
             nextnodes = getNextNodes(currnode,adjmat) # Node-node berikutnya dari currnode
-            for node in nextnodes: # Iterasi pada node-node berikutnya dari currnode
+            for node in nextnodes: # Iterasi pada node-node berikutnya (akan disebut node) dari currnode 
                 adjmat[currnode][node] = 0 # Mengeliminasi/menghapus edge dari currnode ke node
-                listIn = countIn(adjmat) # Mengalkulasikan ulang derajat masuk tiap node akibat perubahan pada perintah sebelumnya
-                if(listIn[node] == 0): # Jika node selanjutnya dari currnode sudah tidak memiliki derajat masuk akibat eliminasi
+                listIn[node] -= 1  # Mengurangi derajat masuk node akibat perubahan pada perintah sebelumnya
+                if(listIn[node] == 0): # Jika node sudah tidak memiliki derajat masuk akibat eliminasi
                     zeroIn.append(node) # Masukkan ke list zeroIn
             zeroIn.pop(0) # Hapus elemen pertama zeroIn (elemen pertama sudah selesai diproses)
 
