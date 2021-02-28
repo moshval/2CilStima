@@ -1,5 +1,12 @@
-if1001.
-if2001, if1001.
-if1002.
-if2002, if1002.
-if3005, if2001, if2002.
+Semester1_1.
+Semester1_2.
+Semester1_3.
+Semester2_1,Semester1_1.
+Semester2_2,Semester1_2.
+Semester3_1,Semester2_1,Semester1_1.
+Semester4_1,Semester3_1.
+Semester5_1,Semester4_1.
+Semester6_1,Semester5_1.
+Semester6_2,Semester1_2,Semester2_2,Semester3_1,Semester4_1,Semester5_1.
+Semester7_1,Semester6_1.
+Semester8_1,Semester1_1,Semester7_1.
