@@ -10,9 +10,9 @@ Deskripsi File : File Utama (Driver)
 
 import importlib # Library import module
 
-# import sols
+#import sols
 sols = importlib.import_module('13519018_sols') # Solusi
-# import util
+#import util
 util = importlib.import_module('13519018_util') # Utility
 
 from time import time # Library Waktu
@@ -36,6 +36,10 @@ listIn = sols.countIn(adjmat) # Membuat list yang berisi derajat masuk tiap node
 order = sols.topSort(adjmat,listIn) # Membuat list yang berisi index kode mata kuliah  yang sudah terurut menggunakan topological sort
 
 if(len(order)!=0):
+    print("\nBanyak Mata Kuliah :",end=" ")
+    print(len(parse[1]))
+    print("Banyak Semester yang dibutuhkan :",end=" ")
+    print(len(order))
     finList = util.generateCode(order,parse[1]) # Membuat list yang berisi kode mata kuliah yang sudah terurut pada list order 
     print("\nOutput :")
     util.printSems(finList) # Print output per semester

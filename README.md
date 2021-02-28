@@ -5,11 +5,12 @@ Disusun oleh : Mohammad Sheva Almeyda Sofjan (13519018 | K01)
 
 ---
 # Deskripsi Singkat
-Program mampu menyusun rencana pengambilan mata kuliah.\
+Program mampu menyusun rencana pengambilan mata kuliah.
+
 Implementasi Topological Sort pada graf asiklik berarah (Directed Acyclic Graph).\
 Topological Sort pada program ini menggunakan algoritma source-removal (ref : Levitin page 141).\
 Decrease and conquer pada algoritma ini terletak pada fungsi topSort yaitu pengulangan operasi pemilihan dan penghapusan node dengan derajat masuk 0 sehingga banyaknya node yang harus diurus semakin berkurang hingga habis (memenuhi ketentuan stop pada while len(zeroIn) > 0) 
-dan list order mengandung semua node.\
+dan list order mengandung semua node.
 
 Dibuat menggunakan bahasa pemrograman python.\
 Input berupa graf dalam file dengan ekstensi .txt dengan format berikut :
@@ -29,9 +30,7 @@ c5, c2, c4.
 ---
 # How To Run :
 0. Pastikan python 3 sudah terinstal pada sistem operasi anda
-1. Pindah ke direktori src, lalu run 13519018_main.py\ 
-   ATAU\ 
-   Pindah ke direktori bin, lalu run 13519018.exe
+1. Pindah ke direktori src, lalu run 13519018_main.py (ATAU) Pindah ke direktori bin, lalu run 13519018.exe
 2. Akan muncul tampilan berikut:
 ```
 =======================================================
@@ -50,7 +49,7 @@ Masukkan Nama File (dengan ekstensi, sebagai contoh : tc1.txt) :
 # Contoh Eksekusi Program :
 ```
 =======================================================
-            <<Memorable MatKul Planner>>
+             <<Memorable MatKul Planner>>
   Dapat menyusun rencana pengambilan mata kuliah anda
             Cr : Mohammad Sheva (13519018)
 =======================================================
@@ -64,6 +63,9 @@ c3.
 c4,c1,c3.
 c5,c2,c4.
 
+Banyak Mata Kuliah : 5
+Banyak Semester yang dibutuhkan : 5
+
 Output :
 Semester 1 : c3
 Semester 2 : c1
@@ -71,5 +73,6 @@ Semester 3 : c4
 Semester 4 : c2
 Semester 5 : c5
 
-Lama eksekusi :  0.01565098762512207  detik
+Lama eksekusi :  0.024934768676757812  detik
+Masukkan input apapun untuk keluar dari program...
 ```
