@@ -5,7 +5,7 @@ Deskripsi : Tugas Kecil 2 IF2211 Strategi Algoritma
             Aplikasi penyusunan kuliah 
             menggunakan Topological Sort, 
             penerapan Decrease n Conquer 
-Deskripsi File : File Algoritma Penyelesaian (Driver)
+Deskripsi File : File Algoritma Penyelesaian
 '''
 
 def makeAdj(isi,codelist): 

@@ -32,7 +32,6 @@ util.inputPrinter(parse[0]) # Print input
 adjmat = sols.makeAdj(parse[0],parse[1]) # Merepresentasikan graf dalam matriks adjacency
 
 listIn = sols.countIn(adjmat) # Membuat list yang berisi derajat masuk tiap node
-
 order = sols.topSort(adjmat,listIn) # Membuat list yang berisi index kode mata kuliah  yang sudah terurut menggunakan topological sort
 
 if(len(order)!=0):
